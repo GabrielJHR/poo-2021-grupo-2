@@ -35,7 +35,7 @@ public class Calculadora {
 			
 		}while (opc.charAt(0) == 's');
 		
-		
+		sc.close();
 
 	}
 
