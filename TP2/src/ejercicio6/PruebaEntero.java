@@ -34,7 +34,7 @@ public class PruebaEntero {
 		int i;
 		
 		for(i = numero.getNumero() - 1; i > 1; i--) {
-			acumulador += acumulador * i;
+			acumulador *= i;
 		}
 		
 		return acumulador;

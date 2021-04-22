@@ -31,7 +31,7 @@ public class Entero {
 	
 	public boolean esPrimo() {
 		
-		for(int i = this.numero - 1; i > 1; i++) {
+		for(int i = this.numero - 1; i > 1; i--) {
 			if(this.numero % i == 0) {
 				return false;
 			}
