@@ -12,7 +12,7 @@ public class Palindromo {
 
 		String cadena, aux;
 		
-		StringBuilder invertir = new StringBuilder(System.in)
+	//	StringBuilder invertir = new StringBuilder(System.in)
 				
 		
 	}
