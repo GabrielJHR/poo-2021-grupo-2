@@ -1,7 +1,6 @@
 package ejercicio3;
 
 import java.util.Scanner;
-import java.lang.StringBuilder;
 
 
 public class Palindromo {
@@ -27,7 +26,7 @@ public class Palindromo {
 			System.out.println("La cadena no es Palindromo.");
 		}
 		
-		
+		teclado.close();
 	}
 
 	
