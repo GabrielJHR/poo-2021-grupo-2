@@ -13,6 +13,10 @@ public class Continente {
 		this.paises.addAll(paises);
 		this.nombre = nombre;
 	}
+	
+	public Continente() {
+		super();
+	}
 
 
 	public String getNombre() {
@@ -30,10 +34,13 @@ public class Continente {
 	}
 
 
-	public  void setPaises(ArrayList<Pais> paises) {
+	public void setPaises(List<Pais> paises) {
 		this.paises = paises;
 	}
 
-	
+	@Override
+	public String toString() {
+		return "Continente [nombre=" + nombre + ", paises=" + paises + "]";
+	}
 	
 }

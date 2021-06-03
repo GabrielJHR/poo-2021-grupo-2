@@ -5,15 +5,9 @@ public class Provincia {
 	private String nombre;
 	private Pais pais;
 	
-	
-	
-	
 	public Provincia() {
 		super();
-		
 	}
-
-
 
 	public Provincia(String nombre, Pais pais) {
 		super();
@@ -21,13 +15,9 @@ public class Provincia {
 		this.pais = pais;
 	}
 
-
-
 	public String getNombre() {
 		return nombre;
 	}
-
-
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
