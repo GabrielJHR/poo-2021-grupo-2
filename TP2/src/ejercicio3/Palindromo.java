@@ -2,44 +2,43 @@ package ejercicio3;
 
 import java.util.Scanner;
 
+
 public class Palindromo {
 
 	public static void main(String[] args) {
 		
-		Scanner sc = new Scanner(System.in);
-		String cadena;
-		
-		System.out.println("Ingresar cadena: ");
-		cadena = sc.next();
-		
-		//Convertir cadena a minusculas y compararlo con la cadena invertida
-		if (cadena.toLowerCase().equals(invertirCadena(cadena).toLowerCase())) {
-			System.out.println("La palabra "+ cadena + " es palindromo.");
-		}
-		else {
-			System.out.println("La palabra "+ cadena + " no es palindromo.");
-		}
-		
-		sc.close();
+		Scanner teclado = new Scanner(System.in);
 
+		String cadena;
+		String cadenaInvertida;
+		
+		System.out.println("Ingrese una cadena: ");
+		
+		cadena = teclado.next();		
+		cadenaInvertida = invertir(cadena);
+		
+		System.out.println("Cadena: " + cadena);		
+		System.out.println("Cadena Invertida: " + cadenaInvertida);	
+		
+		if (cadena.equals(cadenaInvertida)) {
+			System.out.println("La cadena es Palindromo.");
+		}else {
+			System.out.println("La cadena no es Palindromo.");
+		}
+		
+		teclado.close();
+	}
+
+	
+	public static String invertir(String cad) {
+		String cadInvertida;
+		cadInvertida = "";
+		for (int i = cad.length()-1; i >= 0; i--) {
+			cadInvertida = cadInvertida + cad.charAt(i);
+		}
+		return cadInvertida;
+		
+		
 	}
 	
-	/**
-	 * Este metodo recibe como parametro una cadena y retorna la misma cadena invertida
-	 * @param cadena Es la cadena que va a ser invertida
-	 * @return String
-	 * @author Grupo 2
-	 */
-	public static String invertirCadena(String cadena) {
-		int i;
-		String cadenaInvertida = "";
-		
-		for(i = cadena.length() - 1; i >= 0  ; i--) {
-			cadenaInvertida += cadena.charAt(i);
-		}
-		
-		return cadenaInvertida;
-		
-	}
-
 }

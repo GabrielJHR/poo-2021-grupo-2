@@ -5,93 +5,82 @@ import java.util.Arrays;
 public class PruebaArrays {
 
 	public static void main(String[] args) {
-		
 		int[] numeros = {4,2,3,8,1};
+	
+		mostrar(numeros);
 		
-		mostrarEnPantalla(numeros);
+		
+	}
+	
+	public static void mostrar(int[] vector) {
+		
+		System.out.println("Arreglo: " + Arrays.toString(vector));
+		
+		System.out.println("Ordenar de Menor a mayor"  + Arrays.toString(menorMayor(vector)));
+		
+		System.out.println("Ordenar de Mayor a Menor"  + Arrays.toString(mayorMenor(vector)));
+		
+		System.out.println("Promedio: "  + promedio(vector));
+		
+		System.out.println("Tamaño del arreglo: " + vector.length);
+		
+		System.out.println("Mayor: " + mayor(vector));
+		
+	}
+	
 
-	}
-	
-	public static void mostrarEnPantalla(int[] arreglo) {
+	public static int[] menorMayor(int[] vector) {
+		int aux;
 		
-		System.out.println("Arreglo: " + Arrays.toString(arreglo));
-		
-		System.out.println("La cantidad de elementos del arreglo es: " + arreglo.length);
-		
-		System.out.println("El mayor numero del arreglo es: " + mayor(arreglo));
-		
-		System.out.println("El promedio de valores del arreglo es: " + promedio(arreglo));
-		
-		System.out.println("Arreglo de menor a mayor: " + Arrays.toString(menorAMayor(arreglo)));
-		
-		System.out.println("Arreglo de mayor a menor: " + Arrays.toString(mayorAMenor(arreglo)));
-		
-	}
-	
-	public static int[] menorAMayor(int[] arreglo) {
-		boolean orden = false;
-		int i, aux;
-		
-		while (orden != true) {
-			orden = true;
+		for(int i = 0; i <= 3; i++ ) {
 			
-			for (i = 0; i < arreglo.length - 1; i++) {
-				if (arreglo[i] > arreglo[i+1]) {
-					orden = false;
-					aux = arreglo[i];
-					arreglo[i] = arreglo[i+1];
-					arreglo[i+1] = aux;
+			for(int j = i+1; j <= 4; j++ ) {
+				
+				if (vector[i] > vector[j]) {
+					aux = vector[i];
+					vector[i] = vector[j];
+					vector[j] = aux;
 				}
 			}
 		}
-		
-		return arreglo;
+	return vector;	
 	}
 	
-	public static int[] mayorAMenor(int[] arreglo) {
+	public static int[] mayorMenor(int[] vector) {
+		int aux;
 		
-		boolean orden = false;
-		int i, aux;
-		
-		while (orden != true) {
-			orden = true;
+		for(int i = 0; i <= vector.length; i++ ) {
 			
-			for (i = 0; i < arreglo.length - 1; i++) {
-				if (arreglo[i] < arreglo[i+1]) {
-					orden = false;
-					aux = arreglo[i];
-					arreglo[i] = arreglo[i+1];
-					arreglo[i+1] = aux;
+			for(int j = i+1; j <= vector.length-1; j++ ) {
+				
+				if (vector[i] < vector[j]) {
+					aux = vector[i];
+					vector[i] = vector[j];
+					vector[j] = aux;
 				}
 			}
 		}
-		
-		return arreglo;
+	return vector;	
 	}
 	
-	public static int mayor(int[] arreglo) {
-		int mayor = arreglo[0];
-		int i;
-		
-		for (i = 0; i < arreglo.length; i++) {
-			if (arreglo[i] > mayor) {
-				mayor = arreglo[i];
+	public static double promedio(int[] vector) {
+		int acomulador = 0;
+		for (int i = 0; i < vector.length ; i++) {
+			acomulador += vector[i];
+			
+		}
+		return acomulador/vector.length;
+	}
+	
+	
+	public static int mayor(int[] vector) {
+		int aux = 0;
+		for (int i=0; i < vector.length ; i++) {
+			if (aux < vector[i]) {
+				aux = vector[i];
 			}
 		}
-		
-		return mayor;		
+		return aux;
 	}
 	
-	public static double promedio(int[] arreglo) {
-		double total = 0;
-		int i;
-		
-		for (i = 0; i < arreglo.length; i++) {
-			total += arreglo[i];
-		}
-		
-		return total / arreglo.length;
-		
-	}
-
 }
