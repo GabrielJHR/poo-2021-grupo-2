@@ -1,5 +1,7 @@
 package cartas;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class JuegoService {
@@ -14,8 +16,15 @@ public class JuegoService {
 		System.out.println("Palo (BASTO, ORO, COPA, ESPADA): ");
 		elegirPalo = sc.next();
 		
-		sc.close();
 		
 		return new Naipe(elegirNumero, Enum.valueOf(Palo.class, elegirPalo));
+	}
+	static boolean verificarGanador(List<Jugador> jugadores, int puntajeganador ) {
+		for (Jugador jugador : jugadores) {
+			if (jugador.getPuntaje() >= puntajeganador) {
+				return true;
+			}
+		}
+		return false;
 	}
 }

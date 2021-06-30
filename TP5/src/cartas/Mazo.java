@@ -49,8 +49,11 @@ public class Mazo {
 		}else {
 			return naipes.remove(0);
 		}
+		
 	}
-
+	public int getCantidad() {
+		return naipes.size();
+	}
 	@Override
 	public String toString() {
 		return "Mazo: " + naipes + ",";

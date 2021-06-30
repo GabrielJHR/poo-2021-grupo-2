@@ -12,6 +12,8 @@ public class PruebaJuego {
 		List<Jugador> jugadores = new ArrayList<Jugador>();
 		Juego juego = new Juego();
 		Mazo mazo = new Mazo();
+		List<Naipe> sacados = new ArrayList<Naipe>();
+		List<Jugador> acertados = new ArrayList<Jugador>();
 		
 		int cantidadJugadores = 0;
 		int puntosParaGanar;
@@ -22,11 +24,11 @@ public class PruebaJuego {
 		do {
 			System.out.println("Cantidad de jugadores (2 o mas): ");
 			cantidadJugadores = sc.nextInt();
-		}while(cantidadJugadores >= 2);
+		}while(cantidadJugadores < 2);
 		
 		
 		for(int i = 0; i < cantidadJugadores; i++) {
-			jugadores.add(new Jugador());
+			jugadores.add(new Jugador(i+1));
 		}
 		
 		System.out.println("Cantidad de puntos para ganar: ");
@@ -35,13 +37,24 @@ public class PruebaJuego {
 		System.out.println("Cantidad de rebarajes: ");
 		rebarajes = sc.nextInt();
 		
-		sc.close();
-		System.out.println("Elegir naipe");
-		for(int i = 0; i< cantidadJugadores; i++) {
-			System.out.println("Jugador: " + jugadores.get(i).getNombre());
-			jugadores.get(i).elegirCarta(JuegoService.elegirNaipe());
-		}
 		
+		System.out.println("Elegir naipe");
+		int i = 0;
+		
+		
+		
+		while (!JuegoService.verificarGanador(jugadores, puntosParaGanar)) {
+			sacados.add(mazo.sacarNaipeArriba());
+			while (i < cantidadJugadores && mazo.getCantidad() > juego.LIMITE ){
+				System.out.println("Jugador: " + jugadores.get(i).getNombre());
+				jugadores.get(i).elegirCarta(JuegoService.elegirNaipe());
+				if (jugadores.get(i).getCartaElegida().equals(sacados.get(sacados.size()-1))) {
+					jugadores.get(i).setPuntaje(jugadores.get(i).getPuntaje()+1);
+				}
+				i++;
+			}
+		}
+		sc.close();
 		
 		
 		
