@@ -1,4 +1,4 @@
-package Formas;
+package formas;
 
 public class Rectangulo extends Forma {
 	private double ladoMayor;
@@ -9,7 +9,7 @@ public class Rectangulo extends Forma {
 		this.ladoMayor = ladoMayor;
 		this.ladoMenor = ladoMenor;
 	}
-	
+	@Override
 	public double calcularArea() {
 		return this.ladoMayor * this.ladoMenor;
 	}

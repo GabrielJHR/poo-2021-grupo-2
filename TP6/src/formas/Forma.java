@@ -1,4 +1,4 @@
-package Formas;
+package formas;
 
 import java.util.Arrays;
 
@@ -15,6 +15,17 @@ public abstract class Forma {
 		this.coordenadas[1] = y;
 		this.nombre = nombre;
 	}
+	/* G) Como todos los metodos de java son virtuales, le agregamos 'abstract'porque cada figura
+	 * tiene su forma de calcular el area. 
+	 */
+	public abstract double calcularArea(); 
+	
+	/* H) Para obligar a todas las clases futuras derivadas, tenga al menos los metodos area y perimetro,
+	 *  hay que crear metodos abstractos,es decir en figura poner public abstract calcularArea(); 
+	 *  y public abstract calcularPerimetro(); 
+	 */
+		
+	
 	
 	public String imprimir() {
 		return "Forma [color=" + color + ", coordenadas=" + Arrays.toString(coordenadas) + ", nombre=" + nombre + "]";
