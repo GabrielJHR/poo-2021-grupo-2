@@ -1,6 +1,7 @@
 package cartas;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -18,6 +19,7 @@ public class PruebaJuego {
 		int cantidadJugadores = 0;
 		int puntosParaGanar;
 		int rebarajes;
+		int contRebarajes = 0;
 		int elegirNumero;
 		String elegirPalo;
 		
@@ -41,26 +43,41 @@ public class PruebaJuego {
 		System.out.println("Elegir naipe");
 		int i = 0;
 		
-		
-		
-		while (!JuegoService.verificarGanador(jugadores, puntosParaGanar)) {
-			sacados.add(mazo.sacarNaipeArriba());
-			while (i < cantidadJugadores && mazo.getCantidad() > juego.LIMITE ){
-				System.out.println("Jugador: " + jugadores.get(i).getNombre());
-				jugadores.get(i).elegirCarta(JuegoService.elegirNaipe());
-				if (jugadores.get(i).getCartaElegida().equals(sacados.get(sacados.size()-1))) {
-					jugadores.get(i).setPuntaje(jugadores.get(i).getPuntaje()+1);
-				}
-				i++;
-			}
+		for (Jugador jugador : jugadores) {
+			System.out.println("Jugador " + jugador.getNombre());
+			jugador.elegirCarta(JuegoService.elegirNaipe());
+			System.out.println();
 		}
+		
+		while ((!JuegoService.verificarGanador(jugadores, puntosParaGanar)) && (rebarajes >= contRebarajes)) {
+			if(mazo.getCantidad() > juego.LIMITE) {
+				sacados.add(mazo.sacarNaipeArriba());
+				System.out.println(sacados.get(sacados.size() - 1));
+				
+				for (Jugador jugador : jugadores) {
+					if(sacados.get(sacados.size() - 1).equals(jugador.getCartaElegida())) {
+						System.out.println("El jugador " + jugador.getNombre() + "debe elegir otra carta.");
+						jugador.setPuntaje(jugador.getPuntaje()+1);
+						jugador.elegirCarta(JuegoService.elegirNaipe());
+					}
+				}
+			}else {
+				sacados.clear();
+				mazo.rebaraja();
+				contRebarajes++;
+			}
+			
+		}
+		
+		Collections.sort(jugadores);
+		
+		System.out.println("Ranking de puntajes");
+		for (Jugador jugador : jugadores) {
+			System.out.println("Jugador " + jugador.getNombre() + ": " + jugador.getPuntaje());
+		}
+		
 		sc.close();
 		
-		
-		
-		
-		
-
 	}
 
 }

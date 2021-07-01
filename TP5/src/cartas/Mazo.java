@@ -31,6 +31,12 @@ public class Mazo {
 		}
 	}
 	
+	public void rebaraja() {
+		this.naipes.clear();
+		this.inicializar();
+		this.mezclar();
+	}
+	
 	public void mezclar() {
 		Collections.shuffle(naipes);
 	}

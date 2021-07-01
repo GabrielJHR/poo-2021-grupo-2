@@ -1,6 +1,6 @@
 package cartas;
 
-public class Jugador {
+public class Jugador implements Comparable<Jugador> {
 	
 	private int nombre;
 	private int puntaje;
@@ -45,6 +45,22 @@ public class Jugador {
 	public String toString() {
 		return "Jugador [nombre= Jugador " + nombre + ", puntaje=" + puntaje + "]";
 	}
+	
+	@Override
+    public int compareTo(Jugador jugador) 
+    {
+
+        if (puntaje > jugador.puntaje) 
+        {
+            return -1;
+        }
+        if (puntaje < jugador.puntaje) 
+        {
+            return 1;
+        }
+
+        return 0;
+    }
 	
 	
 	
